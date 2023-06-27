@@ -1,0 +1,26 @@
+package com.punam.config;
+
+import org.apache.kafka.clients.admin.NewTopic;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.kafka.config.TopicBuilder;
+
+
+@Configuration
+public class KafkaTopicConfig {
+	
+	@Value("${spring.kafka.topic.topic-name}")
+	private String topicName;
+	
+	@Value("${spring.kafka.topic.json-topic-Name}")
+	private String jsonTopicName;
+	
+	public NewTopic krishNamTopic() {
+		return TopicBuilder.name(topicName).build();
+	}
+	
+	public NewTopic krishNamTopicJson() {
+		return TopicBuilder.name(jsonTopicName).build();
+	}
+
+}
